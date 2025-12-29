@@ -24,67 +24,75 @@
 
 ## Introduction
 
-Empower your next project with the stack of Next.js 14, Prisma, Neon, Auth.js v5, Resend, React Email, Shadcn/ui, and Stripe.
+Empower your next project with the stack of Next.js 14, Supabase, Shadcn/ui, and Stripe.
 <br/>
-All seamlessly integrated with the SaaS Starter to accelerate your development and saas journey.
+A simplified SaaS starter with email/password authentication and database management - no complicated OAuth or email services needed.
 
 ## Installation
 
-Clone & create this repo locally with the following command:
-
-```bash
-npx create-next-app my-saas-project --example "https://github.com/mickasmt/next-saas-stripe-starter"
-```
-
-Or, deploy with Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmickasmt%2Fnext-saas-stripe-starter)
-
 ### Steps
 
-1. Install dependencies using pnpm:
+1. Install dependencies:
 
 ```sh
-pnpm install
+npm install
 ```
 
-2. Copy `.env.example` to `.env.local` and update the variables.
+2. Your Supabase credentials are already configured in `.env`:
+
+```
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_SUPABASE_URL=<already-set>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<already-set>
+```
+
+3. (Optional) Add Stripe credentials if you want payment features:
+
+```
+STRIPE_API_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_webhook_secret
+NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PLAN_ID=price_xxx
+NEXT_PUBLIC_STRIPE_PRO_YEARLY_PLAN_ID=price_xxx
+NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_PLAN_ID=price_xxx
+NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PLAN_ID=price_xxx
+```
+
+4. Start the development server:
 
 ```sh
-cp .env.example .env.local
+npm run dev
 ```
 
-3. Start the development server:
+5. Visit `http://localhost:3000` and register an account!
 
-```sh
-pnpm run dev
-```
+## Database Setup
 
-> [!NOTE]  
-> I use [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) package for update this project.
->
-> Use this command for update your project: `ncu -i --format group`
+The database is automatically configured with Supabase. A `profiles` table has been created with:
+- User roles (USER/ADMIN)
+- Stripe subscription data
+- Row Level Security enabled
+- Automatic profile creation on signup
 
-## Roadmap
-- [ ] Upgrade eslint to v9
-- [ ] Add resend for success subscriptions
+## Deployment
+
+Deploy to Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+Make sure to add your environment variables in the Vercel dashboard.
 
 ## Tech Stack + Features
-
-https://github.com/mickasmt/next-saas-stripe-starter/assets/62285783/828a4e0f-30e3-4cfe-96ff-4dfd9cd55124
 
 ### Frameworks
 
 - [Next.js](https://nextjs.org/) – React framework for building performant apps with the best developer experience
-- [Auth.js](https://authjs.dev/) – Handle user authentication with ease with providers like Google, Twitter, GitHub, etc.
-- [Prisma](https://www.prisma.io/) – Typescript-first ORM for Node.js
-- [React Email](https://react.email/) – Versatile email framework for efficient and flexible email development
+- [Supabase](https://supabase.com/) – Open source Firebase alternative with Authentication and PostgreSQL database
+- [Stripe](https://stripe.com/) – Payment processing (optional)
 
 ### Platforms
 
-- [Vercel](https://vercel.com/) – Easily preview & deploy changes with git
-- [Resend](https://resend.com/) – A powerful email framework for streamlined email development
-- [Neon](https://neon.tech/) – Serverless Postgres with autoscaling, branching, bottomless storage and generous free tier.
+- [Vercel](https://vercel.com/) – Deploy with ease
+- [Supabase](https://supabase.com/) – Database and authentication hosting
 
 ### UI
 

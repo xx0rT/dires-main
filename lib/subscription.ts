@@ -57,7 +57,7 @@ export async function getUserSubscriptionPlan(
   return {
     ...plan,
     ...user,
-    stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime(),
+    stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime() ?? 0,
     isPaid,
     interval,
     isCanceled
