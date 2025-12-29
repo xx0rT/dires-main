@@ -1,4 +1,4 @@
-import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import {
   Dispatch,
   SetStateAction,
@@ -19,7 +19,7 @@ function SignInModal({
   showSignInModal: boolean;
   setShowSignInModal: Dispatch<SetStateAction<boolean>>;
 }) {
-  const [signInClicked, setSignInClicked] = useState(false);
+  const router = useRouter();
 
   return (
     <Modal showModal={showSignInModal} setShowModal={setShowSignInModal}>
@@ -30,30 +30,19 @@ function SignInModal({
           </a>
           <h3 className="font-urban text-2xl font-bold">Sign In</h3>
           <p className="text-sm text-gray-500">
-            This is strictly for demo purposes - only your email and profile
-            picture will be stored.
+            Sign in to access your dashboard and manage your account.
           </p>
         </div>
 
         <div className="flex flex-col space-y-4 bg-secondary/50 px-4 py-8 md:px-16">
           <Button
             variant="default"
-            disabled={signInClicked}
             onClick={() => {
-              setSignInClicked(true);
-              signIn("google", { redirect: false }).then(() =>
-                setTimeout(() => {
-                  setShowSignInModal(false);
-                }, 400),
-              );
+              setShowSignInModal(false);
+              router.push("/login");
             }}
           >
-            {signInClicked ? (
-              <Icons.spinner className="mr-2 size-4 animate-spin" />
-            ) : (
-              <Icons.google className="mr-2 size-4" />
-            )}{" "}
-            Sign In with Google
+            Go to Sign In
           </Button>
         </div>
       </div>

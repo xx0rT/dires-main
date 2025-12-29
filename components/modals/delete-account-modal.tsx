@@ -5,7 +5,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { signOut, useSession } from "next-auth/react";
+import { useAuth } from "@/lib/auth-provider";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,7 @@ function DeleteAccountModal({
   showDeleteAccountModal: boolean;
   setShowDeleteAccountModal: Dispatch<SetStateAction<boolean>>;
 }) {
-  const { data: session } = useSession();
+  const { user, signOut } = useAuth();
   const [deleting, setDeleting] = useState(false);
 
   async function deleteAccount() {
@@ -32,12 +32,9 @@ function DeleteAccountModal({
       },
     }).then(async (res) => {
       if (res.status === 200) {
-        // delay to allow for the route change to complete
         await new Promise((resolve) =>
-          setTimeout(() => {
-            signOut({
-              callbackUrl: `${window.location.origin}/`,
-            });
+          setTimeout(async () => {
+            await signOut();
             resolve(null);
           }, 500),
         );
@@ -58,8 +55,8 @@ function DeleteAccountModal({
       <div className="flex flex-col items-center justify-center space-y-3 border-b p-4 pt-8 sm:px-16">
         <UserAvatar
           user={{
-            name: session?.user?.name || null,
-            image: session?.user?.image || null,
+            name: user?.name || null,
+            image: user?.image || null,
           }}
         />
         <h3 className="text-lg font-semibold">Delete Account</h3>
@@ -67,8 +64,6 @@ function DeleteAccountModal({
           <b>Warning:</b> This will permanently delete your account and your
           active subscription!
         </p>
-
-        {/* TODO: Use getUserSubscriptionPlan(session.user.id) to display the user's subscription if he have a paid plan */}
       </div>
 
       <form

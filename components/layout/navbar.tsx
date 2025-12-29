@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/lib/auth-provider";
 
 import { docsConfig } from "@/config/docs";
 import { marketingConfig } from "@/config/marketing";
@@ -24,7 +24,7 @@ interface NavBarProps {
 
 export function NavBar({ scroll = false }: NavBarProps) {
   const scrolled = useScroll(50);
-  const { data: session, status } = useSession();
+  const { user, loading } = useAuth();
   const { setShowSignInModal } = useContext(ModalContext);
 
   const selectedLayout = useSelectedLayoutSegment();
@@ -100,9 +100,9 @@ export function NavBar({ scroll = false }: NavBarProps) {
             </div>
           ) : null}
 
-          {session ? (
+          {user ? (
             <Link
-              href={session.user.role === "ADMIN" ? "/admin" : "/dashboard"}
+              href={user.role === "ADMIN" ? "/admin" : "/dashboard"}
               className="hidden md:block"
             >
               <Button
@@ -114,7 +114,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
                 <span>Dashboard</span>
               </Button>
             </Link>
-          ) : status === "unauthenticated" ? (
+          ) : !loading ? (
             <Button
               className="hidden gap-2 px-5 md:flex"
               variant="default"
