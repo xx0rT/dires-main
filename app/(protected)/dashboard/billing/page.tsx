@@ -8,8 +8,10 @@ import { DashboardHeader } from "@/components/dashboard/header";
 import { BillingInfo } from "@/components/pricing/billing-info";
 import { Icons } from "@/components/shared/icons";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = constructMetadata({
-  title: "Billing – SaaS Starter",
+  title: "Billing – SaaS Starter",
   description: "Manage billing and your subscription plan.",
 });
 

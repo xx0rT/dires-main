@@ -11,6 +11,8 @@ import { ModeToggle } from "@/components/layout/mode-toggle";
 import { UserAccountNav } from "@/components/layout/user-account-nav";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
 
+export const dynamic = 'force-dynamic';
+
 interface ProtectedLayoutProps {
   children: React.ReactNode;
 }

@@ -2,6 +2,8 @@ import { redirect } from "next/navigation";
 
 import { getCurrentUser } from "@/lib/session";
 
+export const dynamic = 'force-dynamic';
+
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
