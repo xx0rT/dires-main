@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { updateUserRole, type FormData } from "@/actions/update-user-role";
+import { useRouter } from "next/navigation";
+import { updateUserRole, type FormData, type UserRole } from "@/actions/update-user-role";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { User, UserRole } from "@prisma/client";
-import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -30,16 +29,19 @@ import { SectionColumns } from "@/components/dashboard/section-columns";
 import { Icons } from "@/components/shared/icons";
 
 interface UserNameFormProps {
-  user: Pick<User, "id" | "role">;
+  user: {
+    id: string;
+    role: UserRole;
+  };
 }
 
 export function UserRoleForm({ user }: UserNameFormProps) {
-  const { update } = useSession();
+  const router = useRouter();
   const [updated, setUpdated] = useState(false);
   const [isPending, startTransition] = useTransition();
   const updateUserRoleWithId = updateUserRole.bind(null, user.id);
 
-  const roles = Object.values(UserRole);
+  const roles: UserRole[] = ["USER", "ADMIN"];
   const [role, setRole] = useState(user.role);
 
   const form = useForm<FormData>({
@@ -58,9 +60,9 @@ export function UserRoleForm({ user }: UserNameFormProps) {
           description: "Your role was not updated. Please try again.",
         });
       } else {
-        await update();
         setUpdated(false);
         toast.success("Your role has been updated.");
+        router.refresh();
       }
     });
   };
@@ -80,11 +82,9 @@ export function UserRoleForm({ user }: UserNameFormProps) {
                 <FormItem className="w-full space-y-0">
                   <FormLabel className="sr-only">Role</FormLabel>
                   <Select
-                    // TODO:(FIX) Option value not update. Use useState for the moment
                     onValueChange={(value: UserRole) => {
                       setUpdated(user.role !== value);
                       setRole(value);
-                      // field.onChange;
                     }}
                     name={field.name}
                     defaultValue={user.role}
@@ -96,7 +96,7 @@ export function UserRoleForm({ user }: UserNameFormProps) {
                     </FormControl>
                     <SelectContent>
                       {roles.map((role) => (
-                        <SelectItem key={role} value={role.toString()}>
+                        <SelectItem key={role} value={role}>
                           {role}
                         </SelectItem>
                       ))}

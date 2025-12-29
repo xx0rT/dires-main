@@ -1,6 +1,6 @@
 "use server";
 
-import { auth } from "@/auth";
+import { createClient } from "@/lib/supabase/server";
 import { stripe } from "@/lib/stripe";
 import { getUserSubscriptionPlan } from "@/lib/subscription";
 import { absoluteUrl } from "@/lib/utils";
@@ -11,15 +11,14 @@ export type responseAction = {
   stripeUrl?: string;
 }
 
-// const billingUrl = absoluteUrl("/dashboard/billing")
 const billingUrl = absoluteUrl("/pricing")
 
 export async function generateUserStripe(priceId: string): Promise<responseAction> {
   let redirectUrl: string = "";
 
   try {
-    const session = await auth()
-    const user = session?.user;
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
 
     if (!user || !user.email || !user.id) {
       throw new Error("Unauthorized");

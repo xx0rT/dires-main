@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { auth } from "@/auth";
+import { createClient } from "@/lib/supabase/server";
 
 import { stripe } from "@/lib/stripe";
 import { absoluteUrl } from "@/lib/utils";
@@ -19,9 +19,10 @@ export async function openCustomerPortal(
   let redirectUrl: string = "";
 
   try {
-    const session = await auth();
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
 
-    if (!session?.user || !session?.user.email) {
+    if (!user || !user.email) {
       throw new Error("Unauthorized");
     }
 
