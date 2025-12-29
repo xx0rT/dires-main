@@ -1,52 +1,44 @@
-<a href="https://next-saas-stripe-starter.vercel.app">
-  <img alt="SaaS Starter" src="public/_static/og.jpg">
-  <h1 align="center">Next SaaS Stripe Starter</h1>
+<a href="#">
+  <img alt="FyzioTerapie" src="public/_static/og.jpg">
+  <h1 align="center">FyzioTerapie - Moderní fyzioterapeutická péče</h1>
 </a>
 
 <p align="center">
-  Start at full speed with SaaS Starter !
+  Váš partner pro zdravý pohyb a kvalitní život
 </p>
 
 <p align="center">
-  <a href="https://twitter.com/miickasmt">
-    <img src="https://img.shields.io/twitter/follow/miickasmt?style=flat&label=miickasmt&logo=twitter&color=0bf&logoColor=fff" alt="Mickasmt Twitter follower count" />
-  </a>
-</p>
-
-<p align="center">
-  <a href="#introduction"><strong>Introduction</strong></a> ·
-  <a href="#installation"><strong>Installation</strong></a> ·
-  <a href="#tech-stack--features"><strong>Tech Stack + Features</strong></a> ·
-  <a href="#author"><strong>Author</strong></a> ·
-  <a href="#credits"><strong>Credits</strong></a>
+  <a href="#o-projektu"><strong>O projektu</strong></a> ·
+  <a href="#instalace"><strong>Instalace</strong></a> ·
+  <a href="#technologie"><strong>Technologie</strong></a>
 </p>
 <br/>
 
-## Introduction
+## O projektu
 
-Empower your next project with the stack of Next.js 14, Supabase, Shadcn/ui, and Stripe.
+Moderní webová aplikace pro fyzioterapeutickou praxi postavená na Next.js 14, Supabase, Shadcn/ui a Stripe.
 <br/>
-A simplified SaaS starter with email/password authentication and database management - no complicated OAuth or email services needed.
+Online rezervační systém s komplexní správou pacientů, termínů a plateb.
 
-## Installation
+## Instalace
 
-### Steps
+### Kroky
 
-1. Install dependencies:
+1. Nainstalujte závislosti:
 
 ```sh
 npm install
 ```
 
-2. Your Supabase credentials are already configured in `.env`:
+2. Supabase je již nakonfigurována v `.env`:
 
 ```
 NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_SUPABASE_URL=<already-set>
-NEXT_PUBLIC_SUPABASE_ANON_KEY=<already-set>
+NEXT_PUBLIC_SUPABASE_URL=<již-nastaveno>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<již-nastaveno>
 ```
 
-3. (Optional) Add Stripe credentials if you want payment features:
+3. (Volitelné) Přidejte Stripe klíče pro platební funkce:
 
 ```
 STRIPE_API_KEY=your_stripe_secret_key

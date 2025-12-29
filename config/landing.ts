@@ -2,50 +2,50 @@ import { FeatureLdg, InfoLdg, TestimonialType } from "types";
 
 export const infos: InfoLdg[] = [
   {
-    title: "Empower your projects",
+    title: "Moderní fyzioterapie pro všechny",
     description:
-      "Unlock the full potential of your projects with our open-source SaaS platform. Collaborate seamlessly, innovate effortlessly, and scale limitlessly.",
+      "Poskytujeme kvalitní fyzioterapeutickou péči s individuálním přístupem. Našim cílem je vrátit vás do plné kondice a pomoci s prevencí zranění.",
     image: "/_static/illustrations/work-from-home.jpg",
     list: [
       {
-        title: "Collaborative",
-        description: "Work together with your team members in real-time.",
+        title: "Individuální přístup",
+        description: "Každý pacient je jedinečný, proto vytváříme plány na míru.",
         icon: "laptop",
       },
       {
-        title: "Innovative",
-        description: "Stay ahead of the curve with access constant updates.",
+        title: "Moderní metody",
+        description: "Používáme nejnovější techniky a vybavení pro nejlepší výsledky.",
         icon: "settings",
       },
       {
-        title: "Scalable",
+        title: "Zkušený tým",
         description:
-          "Our platform offers the scalability needed to adapt to your needs.",
+          "Naši fyzioterapeuti mají dlouholeté zkušenosti a pravidelná školení.",
         icon: "search",
       },
     ],
   },
   {
-    title: "Seamless Integration",
+    title: "Online rezervace a pohodlí",
     description:
-      "Integrate our open-source SaaS seamlessly into your existing workflows. Effortlessly connect with your favorite tools and services for a streamlined experience.",
+      "Rezervujte si termín online kdykoliv, sledujte svůj pokrok a komunikujte s terapeutem přímo přes aplikaci. Vše na jednom místě.",
     image: "/_static/illustrations/work-from-home.jpg",
     list: [
       {
-        title: "Flexible",
+        title: "Flexibilní termíny",
         description:
-          "Customize your integrations to fit your unique requirements.",
+          "Rezervujte si termín podle vašich potřeb, včetně večerních hodin.",
         icon: "laptop",
       },
       {
-        title: "Efficient",
-        description: "Streamline your processes and reducing manual effort.",
+        title: "Přehled terapie",
+        description: "Sledujte svůj pokrok a historii návštěv v jedné aplikaci.",
         icon: "search",
       },
       {
-        title: "Reliable",
+        title: "Spolehlivost",
         description:
-          "Rely on our robust infrastructure and comprehensive documentation.",
+          "Automatické připomínky a snadná správa vašich návštěv.",
         icon: "settings",
       },
     ],
@@ -54,44 +54,44 @@ export const infos: InfoLdg[] = [
 
 export const features: FeatureLdg[] = [
   {
-    title: "Feature 1",
+    title: "Rehabilitace",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Komplexní rehabilitační programy po úrazech, operacích nebo při chronických potížích.",
     link: "/",
     icon: "nextjs",
   },
   {
-    title: "Feature 2",
+    title: "Sportovní fyzioterapie",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Specializovaná péče pro sportovce, prevence zranění a návrat do formy.",
     link: "/",
     icon: "google",
   },
   {
-    title: "Feature 3",
+    title: "Masáže",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Léčebné, relaxační a sportovní masáže pro uvolnění svalů a regeneraci.",
     link: "/",
     icon: "gitHub",
   },
   {
-    title: "Feature 4",
+    title: "Cvičení na míru",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Individuální cvičební plány pro domácí péči a dlouhodobé zlepšení.",
     link: "/",
     icon: "laptop",
   },
   {
-    title: "Feature 5",
+    title: "Online konzultace",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Možnost konzultace s terapeutem online, ideální pro kontrolní návštěvy.",
     link: "/",
     icon: "user",
   },
   {
-    title: "Feature 6",
+    title: "Diagnostika",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Podrobné vyšetření pohybového aparátu a stanovení terapeutického plánu.",
     link: "/",
     icon: "copy",
   },
@@ -99,52 +99,52 @@ export const features: FeatureLdg[] = [
 
 export const testimonials: TestimonialType[] = [
   {
-    name: "John Doe",
-    job: "Full Stack Developer",
-    image: "https://randomuser.me/api/portraits/men/1.jpg",
+    name: "Jana Nová",
+    job: "Atletka",
+    image: "https://randomuser.me/api/portraits/women/1.jpg",
     review:
-      "The next-saas-stripe-starter repo has truly revolutionized my development workflow. With its comprehensive features and seamless integration with Stripe, I've been able to build and deploy projects faster than ever before. The documentation is clear and concise, making it easy to navigate through the setup process. I highly recommend next-saas-stripe-starter to any developer.",
+      "Po zranění kolena jsem díky fyzioterapii mohla vrátit se zpět k tréninku. Individuální přístup a moderní metody mi opravdu pomohly. Online rezervace je super, nemusím nikam volat.",
   },
   {
-    name: "Alice Smith",
-    job: "UI/UX Designer",
-    image: "https://randomuser.me/api/portraits/women/2.jpg",
+    name: "Petr Svoboda",
+    job: "Kancelářský pracovník",
+    image: "https://randomuser.me/api/portraits/men/2.jpg",
     review:
-      "Thanks to next-saas-stripe-starter, I've been able to create modern and attractive user interfaces in record time. The starter kit provides a solid foundation for building sleek and intuitive designs, allowing me to focus more on the creative aspects of my work.",
+      "Trápily mě bolesti zad kvůli sezení u počítače. Po několika sezeních fyzioterapie a cvičení doma je to mnohem lepší. Určitě doporučuji!",
   },
   {
-    name: "David Johnson",
-    job: "DevOps Engineer",
+    name: "Martin Dvořák",
+    job: "Fotbalista",
     image: "https://randomuser.me/api/portraits/men/3.jpg",
     review:
-      "Thanks to next-saas-stripe-starter, I was able to streamline the entire process and get payments up and running in no time. ",
+      "Sportovní fyzioterapie mi pomohla nejen s léčbou zranění, ale i s prevencí. Tým je profesionální a vždy ochotný poradit.",
   },
   {
-    name: "Michael Wilson",
-    job: "Project Manager",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+    name: "Lucie Malá",
+    job: "Učitelka",
+    image: "https://randomuser.me/api/portraits/women/5.jpg",
     review:
-      "I'm impressed by the quality of code and clear documentation of next-saas-stripe-starter. Kudos to the team!",
+      "Skvělá péče, milé prostředí a flexibilní termíny. Konečně jsem našla fyzioterapeuty, kteří mi opravdu rozumí.",
   },
   {
-    name: "Sophia Garcia",
-    job: "Data Analyst",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+    name: "Tomáš Novotný",
+    job: "Programátor",
+    image: "https://randomuser.me/api/portraits/men/6.jpg",
     review:
-      "next-saas-stripe-starter provided me with the tools I needed to efficiently manage user data. Thank you so much!",
+      "Online konzultace jsou perfektní, když nemám čas dojíždět. Aplikace je jednoduchá a přehledná, vidím svůj pokrok.",
   },
   {
-    name: "Emily Brown",
-    job: "Marketing Manager",
+    name: "Karolína Veselá",
+    job: "Maminká na rodičovské",
     image: "https://randomuser.me/api/portraits/women/4.jpg",
     review:
-      "next-saas-stripe-starter has been an invaluable asset in my role as a marketing manager. With its seamless integration with Stripe, I've been able to launch targeted marketing campaigns with built-in payment functionality, allowing us to monetize our products and services more effectively.",
+      "Po porodu jsem měla potíže se zády. Fyzioterapie mi pomohla vrátit se do formy a cviky, které mi ukázali, dělám i doma. Jsem moc vděčná!",
   },
   {
-    name: "Jason Stan",
-    job: "Web Designer",
+    name: "David Černý",
+    job: "Běžec",
     image: "https://randomuser.me/api/portraits/men/9.jpg",
     review:
-      "Thanks to next-saas-stripe-starter, I've been able to create modern and attractive user interfaces in record time. The starter kit provides a solid foundation for building sleek and intuitive designs, allowing me to focus more on the creative aspects of my work.",
+      "Díky pravidelným návštěvám a masážím jsem výrazně zlepšil svůj výkon a nemám už problémy s achillovkou. Top péče!",
   },
 ];

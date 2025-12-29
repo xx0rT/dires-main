@@ -54,24 +54,24 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                 {isYearly && offer.prices.monthly > 0 ? (
                   <>
                     <span className="mr-2 text-muted-foreground/80 line-through">
-                      ${offer.prices.monthly}
+                      {offer.prices.monthly} Kč
                     </span>
-                    <span>${offer.prices.yearly / 12}</span>
+                    <span>{offer.prices.yearly / 12} Kč</span>
                   </>
                 ) : (
-                  `$${offer.prices.monthly}`
+                  `${offer.prices.monthly} Kč`
                 )}
               </div>
               <div className="-mb-1 ml-2 text-left text-sm font-medium text-muted-foreground">
-                <div>/month</div>
+                <div>/měsíc</div>
               </div>
             </div>
           </div>
           {offer.prices.monthly > 0 ? (
             <div className="text-left text-sm text-muted-foreground">
               {isYearly
-                ? `$${offer.prices.yearly} will be charged when annual`
-                : "when charged monthly"}
+                ? `${offer.prices.yearly} Kč ročně`
+                : "měsíční platba"}
             </div>
           ) : null}
         </div>
@@ -98,7 +98,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
           </ul>
 
           {userId && subscriptionPlan ? (
-            offer.title === "Starter" ? (
+            offer.title === "Základní" ? (
               <Link
                 href="/dashboard"
                 className={cn(
@@ -109,7 +109,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                   "w-full",
                 )}
               >
-                Go to dashboard
+                Přejít na dashboard
               </Link>
             ) : (
               <BillingFormButton
@@ -121,14 +121,14 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
           ) : (
             <Button
               variant={
-                offer.title.toLocaleLowerCase() === "pro"
+                offer.title.toLocaleLowerCase() === "aktivní"
                   ? "default"
                   : "outline"
               }
               rounded="full"
               onClick={() => setShowSignInModal(true)}
             >
-              Sign in
+              Přihlásit se
             </Button>
           )}
         </div>
@@ -139,7 +139,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
   return (
     <MaxWidthWrapper>
       <section className="flex flex-col items-center text-center">
-        <HeaderSection label="Pricing" title="Start at full speed !" />
+        <HeaderSection label="Cenník" title="Vyberte si balíček péče na míru" />
 
         <div className="mb-4 mt-10 flex items-center gap-5">
           <ToggleGroup
@@ -155,14 +155,14 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
               className="rounded-full px-5 data-[state=on]:!bg-primary data-[state=on]:!text-primary-foreground"
               aria-label="Toggle yearly billing"
             >
-              Yearly (-20%)
+              Ročně (-10%)
             </ToggleGroupItem>
             <ToggleGroupItem
               value="monthly"
               className="rounded-full px-5 data-[state=on]:!bg-primary data-[state=on]:!text-primary-foreground"
               aria-label="Toggle monthly billing"
             >
-              Monthly
+              Měsíčně
             </ToggleGroupItem>
           </ToggleGroup>
         </div>
@@ -174,17 +174,17 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
         </div>
 
         <p className="mt-3 text-balance text-center text-base text-muted-foreground">
-          Email{" "}
+          Napište na{" "}
           <a
             className="font-medium text-primary hover:underline"
-            href="mailto:support@saas-starter.com"
+            href="mailto:info@fyzioterapie.cz"
           >
-            support@saas-starter.com
+            info@fyzioterapie.cz
           </a>{" "}
-          for to contact our support team.
+          pro více informací nebo individuální nabídku.
           <br />
           <strong>
-            You can test the subscriptions and won&apos;t be charged.
+            První konzultace je vždy zdarma!
           </strong>
         </p>
       </section>

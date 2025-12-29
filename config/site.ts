@@ -4,44 +4,44 @@ import { env } from "@/env.mjs";
 const site_url = env.NEXT_PUBLIC_APP_URL;
 
 export const siteConfig: SiteConfig = {
-  name: "SaaS Starter",
+  name: "FyzioTerapie",
   description:
-    "Get your project off to an explosive start with SaaS Starter! Harness the power of Next.js 14, Prisma, Neon, Auth.js v5, Resend, React Email, Shadcn/ui and Stripe to build your next big thing.",
+    "Moderní fyzioterapeutická péče s online rezervacemi a individuálním přístupem. Pomůžeme vám s rehabilitací, bolestí pohybového aparátu a sportovními úrazy.",
   url: site_url,
   ogImage: `${site_url}/_static/og.jpg`,
   links: {
     twitter: "https://twitter.com/miickasmt",
     github: "https://github.com/mickasmt/next-saas-stripe-starter",
   },
-  mailSupport: "support@saas-starter.com",
+  mailSupport: "info@fyzioterapie.cz",
 };
 
 export const footerLinks: SidebarNavItem[] = [
   {
-    title: "Company",
+    title: "Společnost",
     items: [
-      { title: "About", href: "#" },
-      { title: "Enterprise", href: "#" },
-      { title: "Terms", href: "/terms" },
-      { title: "Privacy", href: "/privacy" },
+      { title: "O nás", href: "#" },
+      { title: "Náš tým", href: "#" },
+      { title: "Podmínky", href: "/terms" },
+      { title: "Ochrana soukromí", href: "/privacy" },
     ],
   },
   {
-    title: "Product",
+    title: "Služby",
     items: [
-      { title: "Security", href: "#" },
-      { title: "Customization", href: "#" },
-      { title: "Customers", href: "#" },
-      { title: "Changelog", href: "#" },
+      { title: "Rehabilitace", href: "#" },
+      { title: "Masáže", href: "#" },
+      { title: "Sportovní fyzioterapie", href: "#" },
+      { title: "Cenník", href: "/pricing" },
     ],
   },
   {
-    title: "Docs",
+    title: "Podpora",
     items: [
-      { title: "Introduction", href: "#" },
-      { title: "Installation", href: "#" },
-      { title: "Components", href: "#" },
-      { title: "Code Blocks", href: "#" },
+      { title: "Časté dotazy", href: "#" },
+      { title: "Jak to funguje", href: "#" },
+      { title: "Rezervace", href: "#" },
+      { title: "Kontakt", href: "#" },
     ],
   },
 ];
