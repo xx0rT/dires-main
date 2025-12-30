@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { DocsSearch } from "@/components/docs/search";
 import { ModalContext } from "@/components/modals/providers";
+import { ModeToggle } from "@/components/layout/mode-toggle";
 import { Icons } from "@/components/shared/icons";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
 
@@ -40,16 +41,16 @@ export function NavBar({ scroll = false }: NavBarProps) {
   return (
     <header
       className={`sticky top-0 z-40 flex w-full justify-center bg-background/60 backdrop-blur-xl transition-all ${
-        scroll ? (scrolled ? "border-b" : "bg-transparent") : "border-b"
+        scroll ? (scrolled ? "border-b shadow-sm" : "bg-transparent") : "border-b"
       }`}
     >
       <MaxWidthWrapper
-        className="flex h-14 items-center justify-between py-4"
+        className="flex h-16 items-center justify-between py-4"
         large={documentation}
       >
         <div className="flex gap-6 md:gap-10">
-          <Link href="/" className="flex items-center space-x-1.5">
-            <Icons.logo />
+          <Link href="/" className="flex items-center space-x-2 transition-opacity hover:opacity-80">
+            <Icons.logo className="size-6" />
             <span className="font-urban text-xl font-bold">
               {siteConfig.name}
             </span>
@@ -63,7 +64,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
                   href={item.disabled ? "#" : item.href}
                   prefetch={true}
                   className={cn(
-                    "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
+                    "flex items-center text-sm font-medium transition-colors hover:text-foreground/80",
                     item.href.startsWith(`/${selectedLayout}`)
                       ? "text-foreground"
                       : "text-foreground/60",
@@ -78,7 +79,6 @@ export function NavBar({ scroll = false }: NavBarProps) {
         </div>
 
         <div className="flex items-center space-x-3">
-          {/* right header for docs */}
           {documentation ? (
             <div className="hidden flex-1 items-center space-x-4 sm:justify-end lg:flex">
               <div className="hidden lg:flex lg:grow-0">
@@ -99,6 +99,8 @@ export function NavBar({ scroll = false }: NavBarProps) {
               </div>
             </div>
           ) : null}
+
+          <ModeToggle />
 
           {user ? (
             <Link
@@ -122,7 +124,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
               rounded="full"
               onClick={() => setShowSignInModal(true)}
             >
-              <span>Sign In</span>
+              <span>Přihlásit se</span>
               <Icons.arrowRight className="size-4" />
             </Button>
           ) : (

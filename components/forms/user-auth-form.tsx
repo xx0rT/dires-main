@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
@@ -15,8 +15,8 @@ import { Icons } from "@/components/shared/icons";
 import { createClient } from "@/lib/supabase/client";
 
 const authSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8, "Password must be at least 8 characters"),
+  email: z.string().email("Zadejte platnou emailovou adresu"),
+  password: z.string().min(8, "Heslo musí mít alespoň 8 znaků"),
 });
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -52,13 +52,13 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
         });
 
         if (error) {
-          return toast.error("Sign up failed", {
+          return toast.error("Registrace se nezdařila", {
             description: error.message,
           });
         }
 
-        toast.success("Account created!", {
-          description: "You can now sign in with your credentials.",
+        toast.success("Účet vytvořen!", {
+          description: "Nyní se můžete přihlásit pomocí svých přihlašovacích údajů.",
         });
 
         router.push("/login");
@@ -69,18 +69,20 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
         });
 
         if (error) {
-          return toast.error("Sign in failed", {
-            description: error.message,
+          return toast.error("Přihlášení se nezdařilo", {
+            description: error.message === "Invalid login credentials"
+              ? "Neplatné přihlašovací údaje"
+              : error.message,
           });
         }
 
-        toast.success("Signed in successfully!");
+        toast.success("Úspěšně přihlášen!");
         router.push(searchParams?.get("from") || "/dashboard");
         router.refresh();
       }
     } catch (error) {
-      toast.error("Something went wrong", {
-        description: "Please try again later.",
+      toast.error("Něco se pokazilo", {
+        description: "Zkuste to prosím znovu později.",
       });
     } finally {
       setIsLoading(false);
@@ -90,31 +92,42 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid gap-2">
-          <div className="grid gap-1">
+        <div className="grid gap-4">
+          <div className="grid gap-2">
             <Label htmlFor="email">
               Email
             </Label>
             <Input
               id="email"
-              placeholder="name@example.com"
+              placeholder="vas@email.cz"
               type="email"
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
               disabled={isLoading}
+              className={cn(errors?.email && "border-red-500")}
               {...register("email")}
             />
             {errors?.email && (
-              <p className="px-1 text-xs text-red-600">
+              <p className="text-xs text-red-600">
                 {errors.email.message}
               </p>
             )}
           </div>
-          <div className="grid gap-1">
-            <Label htmlFor="password">
-              Password
-            </Label>
+          <div className="grid gap-2">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="password">
+                Heslo
+              </Label>
+              {type !== "register" && (
+                <a
+                  href="#"
+                  className="text-xs text-muted-foreground hover:text-primary"
+                >
+                  Zapomněli jste heslo?
+                </a>
+              )}
+            </div>
             <Input
               id="password"
               placeholder="••••••••"
@@ -123,20 +136,25 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
               autoComplete={type === "register" ? "new-password" : "current-password"}
               autoCorrect="off"
               disabled={isLoading}
+              className={cn(errors?.password && "border-red-500")}
               {...register("password")}
             />
             {errors?.password && (
-              <p className="px-1 text-xs text-red-600">
+              <p className="text-xs text-red-600">
                 {errors.password.message}
               </p>
             )}
           </div>
-          <button className={cn(buttonVariants())} disabled={isLoading}>
+          <Button
+            className="w-full"
+            disabled={isLoading}
+            size="lg"
+          >
             {isLoading && (
               <Icons.spinner className="mr-2 size-4 animate-spin" />
             )}
-            {type === "register" ? "Sign Up" : "Sign In"}
-          </button>
+            {type === "register" ? "Vytvořit účet" : "Přihlásit se"}
+          </Button>
         </div>
       </form>
     </div>

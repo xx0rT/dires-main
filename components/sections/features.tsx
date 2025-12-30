@@ -1,10 +1,28 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import { features } from "@/config/landing";
 import { Button } from "@/components/ui/button";
 import { HeaderSection } from "@/components/shared/header-section";
 import { Icons } from "@/components/shared/icons";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
 
 export default function Features() {
   return (
@@ -18,17 +36,26 @@ export default function Features() {
           ariatur."
           />
 
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div
+            className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {features.map((feature) => {
               const Icon = Icons[feature.icon || "nextjs"];
               return (
-                <div
+                <motion.div
                   className="group relative overflow-hidden rounded-2xl border bg-background p-5 md:p-8"
                   key={feature.title}
+                  variants={item}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 aspect-video -translate-y-1/2 rounded-full border bg-gradient-to-b from-purple-500/80 to-white opacity-25 blur-2xl duration-300 group-hover:-translate-y-1/4 dark:from-white dark:to-white dark:opacity-5 dark:group-hover:opacity-10"
+                    className="absolute inset-0 aspect-video -translate-y-1/2 rounded-full border bg-gradient-to-b from-blue-500/80 to-white opacity-25 blur-2xl duration-300 group-hover:-translate-y-1/4 dark:from-white dark:to-white dark:opacity-5 dark:group-hover:opacity-10"
                   />
                   <div className="relative">
                     <div className="relative flex size-12 rounded-2xl border border-border shadow-sm *:relative *:m-auto *:size-6">
@@ -53,10 +80,10 @@ export default function Features() {
                       </Button>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </MaxWidthWrapper>
       </div>
     </section>
